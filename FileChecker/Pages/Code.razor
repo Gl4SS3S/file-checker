@@ -1,36 +1,43 @@
 @inject IFileReader fileReader
 @inject HttpClient Http
 
-<div class="col-md-12">
-    <h3>Result</h3>
-    @((MarkupString)markdownHtml)
+<div class="row">
+    <div class="col-md-6 code-container">
+        @if (!string.IsNullOrEmpty(content))
+        {
+            <code>
+                @content
+            </code>
+        }
+        else
+        {
+            Console.WriteLine("No content");
+        }
+
+    </div>
+    <div class="col-md-6 code-container">
+        @if (!string.IsNullOrEmpty(content))
+        {
+            <code>
+                @content
+            </code>
+        }
+        else
+        {
+            Console.WriteLine("No content");
+        }
+
+    </div>
 </div>
 
+
+
+
 @code {
+    string content = string.Empty;
 
-    
-
-    string markdownValue = "#Markdown Editor\nThis is a test";
-    string markdownHtml = string.Empty;
-
-    protected override async void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        string content = await Http.GetStringAsync("sample-data/weather.json");
-
-        Console.WriteLine(content);
-
-        markdownHtml = Markdig.Markdown.ToHtml(markdownValue ?? string.Empty);
-        base.OnInitialized();
-    }
-
-    Task OnMarkdownValueChanged(string value)
-    {
-        return Task.CompletedTask;
-    }
-
-    Task OnMarkdownValueHTMLChanged(string value)
-    {
-        markdownHtml = value;
-        return Task.CompletedTask;
+        content = await Http.GetStringAsync("sample-data/weather.json");
     }
 }

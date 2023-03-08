@@ -17,11 +17,6 @@ namespace Services
         /// </summary>
         public async Task<string> ReadFileLineByLine()
         {
-            // /Users/jacquesthurling/Projects/file-checker/FileChecker/test/file.json
-            HttpClient client = new HttpClient();
-            string data = await client.GetStringAsync("sample-data/weather.json");
-            
-
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sample-data", "weather.json");
             string GetFullPath = Path.GetFullPath(path);
 
