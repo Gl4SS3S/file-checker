@@ -15,7 +15,7 @@ namespace Services
         /// <summary>
         /// > Reads a file line by line and returns the contents as a string
         /// </summary>
-        public async Task<string> ReadFileLineByLine()
+        public async Task<string> ReadFileLineByLine(string fileContents)
         {
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sample-data", "weather.json");
             string GetFullPath = Path.GetFullPath(path);
