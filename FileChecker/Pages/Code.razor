@@ -8,13 +8,10 @@
             <code>
                 @for (int i = 0; i < lines.Count; i++)
                 {
-                    @foreach (var line in lines)
-                    {
-                        <div class="row">
-                            <div>@(i + 1)</div>
-                            <pre>@line</pre>
-                        </div>
-                    }
+                    <div>
+                        <span class="col-sm-1 code-line-number">@(i + 1)</span>
+                        <span class="col-sm-11 code-line">@lines[i]</span><br/>
+                    </div>
                 }
             </code>
         }
