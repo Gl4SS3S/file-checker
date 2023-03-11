@@ -10,6 +10,8 @@ namespace Services.API
         /// <summary>
         /// > Reads a file line by line and returns the contents as a string
         /// </summary>
-        Task<string> ReadFileLineByLine();
+        List<string> ReadFileLineByLine(string fileContents);
+
+        List<string> CompareFileLineByLine(List<string> fileContents, string reference);
     }
 }

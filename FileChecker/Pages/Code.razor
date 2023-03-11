@@ -2,24 +2,17 @@
 @inject HttpClient Http
 
 <div class="row">
-    <div class="col-md-6 code-container">
+    <div class="col-md-12 code-container">
         @if (!string.IsNullOrEmpty(content))
         {
             <code>
-                @content
-            </code>
-        }
-        else
-        {
-            Console.WriteLine("No content");
-        }
-
-    </div>
-    <div class="col-md-6 code-container">
-        @if (!string.IsNullOrEmpty(content))
-        {
-            <code>
-                @content
+                @for (int i = 0; i < lines.Count; i++)
+                {
+                    <div>
+                        <span class="col-sm-1 code-line-number">@(i + 1)</span>
+                        <span class="col-sm-11 code-line">@lines[i]</span><br/>
+                    </div>
+                }
             </code>
         }
         else
@@ -35,9 +28,23 @@
 
 @code {
     string content = string.Empty;
+    string reference = string.Empty;
+    List<string> lines = new List<string>();
+
+    List<string> difference = new List<string>();
 
     protected override async Task OnInitializedAsync()
     {
         content = await Http.GetStringAsync("sample-data/weather.json");
+        reference = await Http.GetStringAsync("sample-data/reference.json");
+
+        lines = fileReader.ReadFileLineByLine(content);
+
+        difference = fileReader.CompareFileLineByLine(lines, reference);
+
+        foreach (var item in difference)
+        {
+            Console.WriteLine(item);
+        }
     }
 }
