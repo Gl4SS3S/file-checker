@@ -30,5 +30,24 @@ namespace Services
 
             return lines;
         }
+
+        public List<string> CompareFileLineByLine(List<string> fileContents, string reference)
+        {
+            List<string> lines = new List<string>();
+
+            using (StringReader reader = new StringReader(reference))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (!fileContents.Contains(line))
+                    {
+                        lines.Add(line);
+                    }
+                }
+            }
+
+            return lines;
+        }
     }
 }
