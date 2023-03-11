@@ -15,20 +15,20 @@ namespace Services
         /// <summary>
         /// > Reads a file line by line and returns the contents as a string
         /// </summary>
-        public async Task<string> ReadFileLineByLine(string fileContents)
+        public List<string> ReadFileLineByLine(string fileContents)
         {
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sample-data", "weather.json");
-            string GetFullPath = Path.GetFullPath(path);
+            List<string> lines = new List<string>();
 
-            Console.WriteLine("Reading file line by line...");
-            Console.WriteLine(GetFullPath);
-
-            if (File.Exists(GetFullPath))
+            using (StringReader reader = new StringReader(fileContents))
             {
-                Console.WriteLine("File exists");
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    lines.Add(line);
+                }
             }
 
-            return string.Empty;
+            return lines;
         }
     }
 }
