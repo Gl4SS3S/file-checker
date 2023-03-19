@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Services.API;
 
 namespace Services
@@ -31,23 +27,52 @@ namespace Services
             return lines;
         }
 
-        public List<string> CompareFileLineByLine(List<string> fileContents, string reference)
+        public (List<string>, List<string>) CompareFileLineByLine(List<string> fileContents, string reference)
         {
-            List<string> lines = new List<string>();
+            List<string> containedLines = new List<string>();
+            List<string> uncontainedLines = new List<string>();
 
             using (StringReader reader = new StringReader(reference))
             {
                 string line;
+                int i = 0;
+
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (!fileContents.Contains(line))
+                    if (TryGetValue(fileContents, line, i, out string value))
                     {
-                        lines.Add(line);
+                        containedLines.Add(value);
                     }
+                    else
+                    {
+                        uncontainedLines.Add(value);
+                    }
+
+                    i++;
                 }
             }
 
-            return lines;
+            return (containedLines, uncontainedLines);
         }
+
+        private static bool TryGetValue(List<string> fileContent ,string key, int index,out string value)
+        {
+            try
+            {
+                if (!fileContent[index].Contains(key))
+                {
+                    value = key;
+                    return true;
+                }
+
+                value = key;
+                return true;
+            }
+            catch (System.Exception)
+            {
+                value = key;    
+                return false;
+            }
+        }        
     }
 }
