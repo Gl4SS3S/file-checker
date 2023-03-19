@@ -59,14 +59,14 @@ namespace Services
         {
             try
             {
-                if (!fileContent[index].Contains(key))
+                if (fileContent[index].Contains(key))
                 {
                     value = key;
                     return true;
                 }
 
                 value = key;
-                return true;
+                return false;
             }
             catch (System.Exception)
             {

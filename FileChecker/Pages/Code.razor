@@ -43,11 +43,6 @@
 
         (noDifference, difference) = fileReader.CompareFileLineByLine(lines, reference);
 
-        foreach (var item in noDifference)
-        {
-            Console.WriteLine(item);
-        }
-
         foreach (var item in difference)
         {
             Console.WriteLine(item);
