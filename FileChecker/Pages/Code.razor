@@ -31,7 +31,8 @@
     string reference = string.Empty;
     List<string> lines = new List<string>();
 
-    List<string> difference = new List<string>();
+    Dictionary<int, string> difference = new Dictionary<int, string>();
+    List<string> noDifference = new List<string>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -40,7 +41,7 @@
 
         lines = fileReader.ReadFileLineByLine(content);
 
-        difference = fileReader.CompareFileLineByLine(lines, reference);
+        (noDifference, difference) = fileReader.CompareFileLineByLine(lines, reference);
 
         foreach (var item in difference)
         {
