@@ -27,10 +27,10 @@ namespace Services
             return lines;
         }
 
-        public (List<string>, List<string>) CompareFileLineByLine(List<string> fileContents, string reference)
+        public (List<string>, Dictionary<int, string>) CompareFileLineByLine(List<string> fileContents, string reference)
         {
             List<string> containedLines = new List<string>();
-            List<string> uncontainedLines = new List<string>();
+            Dictionary<int,string> uncontainedLines = new Dictionary<int, string>();
 
             using (StringReader reader = new StringReader(reference))
             {
@@ -45,7 +45,7 @@ namespace Services
                     }
                     else
                     {
-                        uncontainedLines.Add(value);
+                        uncontainedLines.Add(i + 1,value);
                     }
 
                     i++;
