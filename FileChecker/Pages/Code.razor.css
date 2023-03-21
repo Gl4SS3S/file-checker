@@ -3,8 +3,8 @@ code {
 }
 
 .difference-added {
-    background-color: #fdd;
-    color: #a00;
+    background-color: rgb(230, 255, 221);
+    color: rgb(23, 170, 0);
 }
 
 .code-container {
