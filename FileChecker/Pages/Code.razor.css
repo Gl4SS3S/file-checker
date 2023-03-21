@@ -2,6 +2,11 @@ code {
     color: rgb(0, 0, 0);
 }
 
+.difference-added {
+    background-color: #fdd;
+    color: #a00;
+}
+
 .code-container {
     background-color: #fcfcfc;
     border-radius: 5px;

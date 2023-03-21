@@ -12,6 +12,13 @@
                         <span class="col-sm-1 code-line-number">@(i + 1)</span>
                         <span class="col-sm-11 code-line">@lines[i]</span><br/>
                     </div>
+                    @if (difference.ContainsKey(i))
+                    {
+                    <div class="difference-added">
+                        <span class="col-sm-1 code-line"><i class="bi bi-plus"></i></span>
+                        <span class="col-sm-11 code-line">@difference[i]</span><br/>    
+                    </div>
+                    }
                 }
             </code>
         }
