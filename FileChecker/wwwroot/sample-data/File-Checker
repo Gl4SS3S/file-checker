@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-21T07:38:42.149Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.44" etag="v71F4VOkSqntn_eMj9jr" version="21.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-21T07:39:45.916Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.44" etag="NhpTN7VsFxBTZlZ6HiXw" version="21.0.6" type="github">
   <diagram name="Page-1" id="_Pl0H0pQZoGu0NR9LtII">
     <mxGraphModel dx="652" dy="348" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -28,7 +28,7 @@
         <mxCell id="pNL8a_FL6bFFyoIl0Et9-7" value="Previous" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="540" y="355" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="pNL8a_FL6bFFyoIl0Et9-9" value="&lt;h1&gt;Loading into memory&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;Originally going to load into Previous Dictionary.&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;If no file has been loaded, add file type to memory meta-data&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Modified Dictionary will only be populated, if and only if the same file has been uploaded, i.e. same name and extension&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;Build a Line Model&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="pNL8a_FL6bFFyoIl0Et9-9" value="&lt;h1&gt;Loading into memory&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;Originally going to load into Previous Dictionary.&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;If no file has been loaded, add file type to memory meta-data&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="770" y="265" width="300" height="255" as="geometry" />
         </mxCell>
         <mxCell id="pNL8a_FL6bFFyoIl0Et9-11" value="" style="endArrow=classic;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="pNL8a_FL6bFFyoIl0Et9-10">
@@ -47,12 +47,6 @@
         </mxCell>
         <mxCell id="pNL8a_FL6bFFyoIl0Et9-13" value="Same File Type" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="770" y="200" width="120" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="pNL8a_FL6bFFyoIl0Et9-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1080" y="265" width="210" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="pNL8a_FL6bFFyoIl0Et9-17" value="&lt;h1&gt;&lt;ul style=&quot;border-color: var(--border-color); font-size: 12px; font-weight: 400;&quot;&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;Line Model:&lt;/li&gt;&lt;ul style=&quot;border-color: var(--border-color);&quot;&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Current Line&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Previous Line&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Previous Value&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Current Value&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Status&lt;/span&gt;&lt;/li&gt;&lt;ul style=&quot;border-color: var(--border-color);&quot;&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Deleted&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Modified&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-size: 8px;&quot;&gt;Added&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1080" y="265" width="210" height="240" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
