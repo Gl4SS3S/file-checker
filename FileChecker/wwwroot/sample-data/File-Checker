@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-21T07:52:57.895Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.44" etag="CiFiih0C_hYDx7oiAi-t" version="21.0.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-21T07:53:56.292Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.44" etag="_r5hfmWg19oExzD6uXZf" version="21.0.6" type="github">
   <diagram name="Page-1" id="_Pl0H0pQZoGu0NR9LtII">
     <mxGraphModel dx="652" dy="348" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -34,6 +34,9 @@
         <mxCell id="pNL8a_FL6bFFyoIl0Et9-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="pNL8a_FL6bFFyoIl0Et9-7" target="pNL8a_FL6bFFyoIl0Et9-20">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="pNL8a_FL6bFFyoIl0Et9-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pNL8a_FL6bFFyoIl0Et9-7" target="pNL8a_FL6bFFyoIl0Et9-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="pNL8a_FL6bFFyoIl0Et9-7" value="Checker" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="540" y="310" width="120" height="40" as="geometry" />
         </mxCell>
@@ -43,11 +46,14 @@
         <mxCell id="pNL8a_FL6bFFyoIl0Et9-13" value="Same File Type" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="770" y="200" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="pNL8a_FL6bFFyoIl0Et9-18" value="Differences" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="540" y="390" width="120" height="40" as="geometry" />
+        <mxCell id="pNL8a_FL6bFFyoIl0Et9-18" value="Exists" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="390" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="pNL8a_FL6bFFyoIl0Et9-20" value="Compressed Dictionary" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="160" y="310" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pNL8a_FL6bFFyoIl0Et9-24" value="Doesn&#39;t" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="390" width="80" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
