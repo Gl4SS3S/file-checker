@@ -51,13 +51,13 @@ namespace Services
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (TryGetValue(fileContents, line, i, out string value))
+                    if (initialValues.TryGetValue(line, out List<int> value))
                     {
-                        containedLines.Add(value);
+                        containedLines.Add(line);
                     }
                     else
                     {
-                        uncontainedLines.Add(i + 1,value);
+                        uncontainedLines.Add(i + 1,line);
                     }
 
                     i++;
