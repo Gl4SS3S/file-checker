@@ -2,7 +2,7 @@
 @inject HttpClient Http
 
 <div class="row">
-    <div class="col-md-12 code-container">
+    <div class="col-md-6 mr-2 code-container">
         @if (!string.IsNullOrEmpty(content))
         {
             <code>
@@ -26,8 +26,16 @@
         {
             Console.WriteLine("No content");
         }
-
     </div>
+    <div class="col-md-6 analysis-block">
+        <h3>Testing</h3>
+    </div>
+</div>
+<div class="row mt-2">
+    <button class="btn btn-info">
+        <i class="bi bi-file-arrow-up"></i>
+        Upload File
+    </button>
 </div>
 
 
@@ -47,8 +55,6 @@
         reference = await Http.GetStringAsync("sample-data/reference.json");
 
         lines = fileReader.ReadFileLineByLine(content);
-
-        (noDifference, difference) = fileReader.CompareFileLineByLine(lines, reference);
 
         foreach (var item in difference)
         {

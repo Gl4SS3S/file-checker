@@ -4,6 +4,7 @@ namespace Services
 {
     public class FileReader : IFileReader
     {
+        private Dictionary<string, List<int>> initialValues = new Dictionary<string, List<int>>();
         public FileReader()
         {   
         }
@@ -11,16 +12,27 @@ namespace Services
         /// <summary>
         /// > Reads a file line by line and returns the contents as a string
         /// </summary>
-        public List<string> ReadFileLineByLine(string fileContents)
+        public List<string>  ReadFileLineByLine(string fileContents)
         {
             List<string> lines = new List<string>();
 
             using (StringReader reader = new StringReader(fileContents))
             {
+                int lineNumber = 1;
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
+                    if (initialValues.TryGetValue(line, out List<int> value))
+                    {
+                        value.Add(lineNumber);
+                        initialValues[line] = value;
+                    }
+                    else
+                    {
+                        initialValues.Add(line, new List<int> { lineNumber });
+                    }
                     lines.Add(line);
+                    lineNumber++;
                 }
             }
 
