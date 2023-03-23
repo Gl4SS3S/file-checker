@@ -23,6 +23,11 @@ code {
     color: #fcfcfc;
     background-color: rgb(0, 6, 36);
     padding: 10px;
+    overflow-y: scroll;
+}
+
+.analysis-block::-webkit-scrollbar{
+    display: none;
 }
 
 .code-line-number {
@@ -31,4 +36,9 @@ code {
     width: 30px;
     text-align: right;
     padding-right: 20px;
+}
+
+.compared {
+    color: rgb(0, 255, 30) !important;
+    background-color: black !important;
 }

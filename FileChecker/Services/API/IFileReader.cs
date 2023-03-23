@@ -12,6 +12,6 @@ namespace Services.API
         /// </summary>
         List<string>  ReadFileLineByLine(string fileContents);
 
-        (List<string>, Dictionary<int, string>) CompareFileLineByLine(List<string> fileContents, string reference);
+        (Dictionary<string, List<int>>, Dictionary<string, List<int>>) CompareFileLineByLine(List<string> fileContents, string reference);
     }
 }

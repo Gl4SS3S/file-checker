@@ -12,13 +12,6 @@
                         <span class="col-sm-1 code-line-number">@(i + 1)</span>
                         <span class="col-sm-11 code-line">@lines[i]</span><br/>
                     </div>
-                    @if (difference.ContainsKey(i + 1))
-                    {
-                        <div class="difference-added">
-                            <span class="col-sm-2 code-line-number"><i class="bi bi-plus"></i></span>
-                            <span class="col-sm-10 code-line">@difference[i + 1]</span><br/>    
-                        </div>
-                    }
                 }
             </code>
         }
@@ -34,11 +27,39 @@
         </div>
         <div class="">
             <h4>Contained Lines</h4>
-            ...
+            <code class="compared">
+                @foreach (KeyValuePair<string, List<int>> item in no_difference)
+                {
+                    <p class="small">
+                        @item.Key
+                        <span class="badge">
+                            in Line(s)
+                        @foreach (int line in item.Value)
+                        {
+                            <span class="px-2">@line</span>
+                        }
+                        </span>
+                    </p>
+                }
+            </code>
         </div>
         <div class="">
             <h4>Doesn't Contain</h4>
-            ...
+            <code class="compared">
+               @foreach (KeyValuePair<string, List<int>> item in difference)
+                {
+                    <p class="small">
+                        @item.Key
+                        <span class="badge">
+                            in Line(s)
+                        @foreach (int line in item.Value)
+                        {
+                            <span class="px-2">@line</span>
+                        }
+                        </span>
+                    </p>
+                } 
+            </code>
         </div>
     </div>
 </div>
@@ -49,16 +70,13 @@
     </button>
 </div>
 
-
-
-
 @code {
     string content = string.Empty;
     string reference = string.Empty;
     List<string> lines = new List<string>();
 
-    Dictionary<int, string> difference = new Dictionary<int, string>();
-    List<string> noDifference = new List<string>();
+    Dictionary<string, List<int>> difference = new Dictionary<string, List<int>>();
+    Dictionary<string, List<int>> no_difference = new Dictionary<string, List<int>>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -67,9 +85,7 @@
 
         lines = fileReader.ReadFileLineByLine(content);
 
-        foreach (var item in difference)
-        {
-            Console.WriteLine(item);
-        }
+        (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference);
+
     }
 }
