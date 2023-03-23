@@ -2,7 +2,7 @@
 @inject HttpClient Http
 
 <div class="row">
-    <div class="col-md-12 code-container">
+    <div class="col-md-6 mr-2 code-container">
         @if (!string.IsNullOrEmpty(content))
         {
             <code>
@@ -19,20 +19,64 @@
         {
             Console.WriteLine("No content");
         }
-
+    </div>
+    <div class="col-md-6 analysis-block">
+        <div>
+            <h4>File Name</h4>
+            <hr style="color: white; height: 3px;">
+        </div>
+        <div class="">
+            <h4>Contained Lines</h4>
+            <code class="compared">
+                @foreach (KeyValuePair<string, List<int>> item in no_difference)
+                {
+                    <p class="small">
+                        @item.Key
+                        <span class="badge">
+                            in Line(s)
+                        @foreach (int line in item.Value)
+                        {
+                            <span class="px-2">@line</span>
+                        }
+                        </span>
+                    </p>
+                }
+            </code>
+        </div>
+        <div class="">
+            <h4>Doesn't Contain</h4>
+            <code class="compared">
+               @foreach (KeyValuePair<string, List<int>> item in difference)
+                {
+                    <p class="small">
+                        @item.Key
+                        <span class="badge">
+                            in Line(s)
+                        @foreach (int line in item.Value)
+                        {
+                            <span class="px-2">@line</span>
+                        }
+                        </span>
+                    </p>
+                } 
+            </code>
+        </div>
     </div>
 </div>
-
-
-
+<div class="row mt-2">
+    <button class="btn btn-info">
+        <i class="bi bi-file-arrow-up"></i>
+        Upload File
+    </button>
+</div>
 
 @code {
     string content = string.Empty;
     string reference = string.Empty;
     List<string> lines = new List<string>();
 
-    Dictionary<int, string> difference = new Dictionary<int, string>();
-    List<string> noDifference = new List<string>();
+    Dictionary<string, List<int>> difference = new Dictionary<string, List<int>>();
+    Dictionary<string, List<int>> no_difference = new Dictionary<string, List<int>>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,11 +85,7 @@
 
         lines = fileReader.ReadFileLineByLine(content);
 
-        (noDifference, difference) = fileReader.CompareFileLineByLine(lines, reference);
+        (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference);
 
-        foreach (var item in difference)
-        {
-            Console.WriteLine(item);
-        }
     }
 }

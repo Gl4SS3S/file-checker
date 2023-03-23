@@ -4,6 +4,7 @@ namespace Services
 {
     public class FileReader : IFileReader
     {
+        private Dictionary<string, List<int>> initialValues = new Dictionary<string, List<int>>();
         public FileReader()
         {   
         }
@@ -11,26 +12,37 @@ namespace Services
         /// <summary>
         /// > Reads a file line by line and returns the contents as a string
         /// </summary>
-        public List<string> ReadFileLineByLine(string fileContents)
+        public List<string>  ReadFileLineByLine(string fileContents)
         {
             List<string> lines = new List<string>();
 
             using (StringReader reader = new StringReader(fileContents))
             {
+                int lineNumber = 1;
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
+                    if (initialValues.TryGetValue(line, out List<int> value))
+                    {
+                        value.Add(lineNumber);
+                        initialValues[line] = value;
+                    }
+                    else
+                    {
+                        initialValues.Add(line, new List<int> { lineNumber });
+                    }
                     lines.Add(line);
+                    lineNumber++;
                 }
             }
 
             return lines;
         }
 
-        public (List<string>, Dictionary<int, string>) CompareFileLineByLine(List<string> fileContents, string reference)
+        public (Dictionary<string, List<int>>, Dictionary<string, List<int>>) CompareFileLineByLine(List<string> fileContents, string reference)
         {
-            List<string> containedLines = new List<string>();
-            Dictionary<int,string> uncontainedLines = new Dictionary<int, string>();
+            Dictionary<string, List<int>> uncontained = new Dictionary<string, List<int>>();
+            Dictionary<string, List<int>> contained = new Dictionary<string, List<int>>();
 
             using (StringReader reader = new StringReader(reference))
             {
@@ -39,20 +51,20 @@ namespace Services
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (TryGetValue(fileContents, line, i, out string value))
+                    if (initialValues.TryGetValue(line, out List<int> value))
                     {
-                        containedLines.Add(value);
+                        value.Add(i + 1);
+                        contained[line] = value;
                     }
                     else
                     {
-                        uncontainedLines.Add(i + 1,value);
+                        uncontained.Add(line, new List<int> { i + 1 });
                     }
-
                     i++;
                 }
             }
 
-            return (containedLines, uncontainedLines);
+            return (contained, uncontained);
         }
 
         private static bool TryGetValue(List<string> fileContent ,string key, int index,out string value)
