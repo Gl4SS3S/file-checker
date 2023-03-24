@@ -1,8 +1,11 @@
 @inject IFileReader fileReader
+@using SpecialCharacters = FileChecker.Models.SpecialCharacters;
 @inject HttpClient Http
 
 <div class="row">
     <div class="col-md-6 mr-2 code-container">
+        <h5>Original</h5>
+        <hr>
         @if (!string.IsNullOrEmpty(content))
         {
             <code>
@@ -22,11 +25,11 @@
     </div>
     <div class="col-md-6 analysis-block">
         <div>
-            <h4>File Name</h4>
-            <hr style="color: white; height: 3px;">
+            <h5>File Name</h5>
+            <hr>
         </div>
         <div class="">
-            <h4>Contained Lines</h4>
+            <h6 class="pb-3">Your File Contains:</h6>
             <code class="compared">
                 @foreach (KeyValuePair<string, List<int>> item in no_difference)
                 {
@@ -43,9 +46,9 @@
                 }
             </code>
         </div>
-        <div class="">
-            <h4>Doesn't Contain</h4>
-            <code class="compared">
+        <div class="mt-5">
+            <h6 class="pb-3">Your File Doesn't Contain:</h6>
+            <code class="not-contained">
                @foreach (KeyValuePair<string, List<int>> item in difference)
                 {
                     <p class="small">
@@ -73,6 +76,9 @@
 @code {
     string content = string.Empty;
     string reference = string.Empty;
+
+    SpecialCharacters special_characters = new SpecialCharacters();
+
     List<string> lines = new List<string>();
 
     Dictionary<string, List<int>> difference = new Dictionary<string, List<int>>();
@@ -83,9 +89,10 @@
         content = await Http.GetStringAsync("sample-data/weather.json");
         reference = await Http.GetStringAsync("sample-data/reference.json");
 
+        special_characters = await Http.GetFromJsonAsync<SpecialCharacters>("special-json/special_chars.json");
+
         lines = fileReader.ReadFileLineByLine(content);
 
-        (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference);
-
+        (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference, special_characters);
     }
 }
