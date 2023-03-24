@@ -1,4 +1,5 @@
 @inject IFileReader fileReader
+@using SpecialCharacters = FileChecker.Models.SpecialCharacters;
 @inject HttpClient Http
 
 <div class="row">
@@ -73,6 +74,9 @@
 @code {
     string content = string.Empty;
     string reference = string.Empty;
+
+    SpecialCharacters special_characters = new SpecialCharacters();
+
     List<string> lines = new List<string>();
 
     Dictionary<string, List<int>> difference = new Dictionary<string, List<int>>();
@@ -83,9 +87,11 @@
         content = await Http.GetStringAsync("sample-data/weather.json");
         reference = await Http.GetStringAsync("sample-data/reference.json");
 
+        special_characters = await Http.GetFromJsonAsync<SpecialCharacters>("special-json/special_chars.json");
+
         lines = fileReader.ReadFileLineByLine(content);
 
-        (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference);
+        (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference, special_characters);
 
     }
 }

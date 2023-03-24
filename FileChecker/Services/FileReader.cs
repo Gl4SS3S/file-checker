@@ -1,4 +1,5 @@
 using Services.API;
+using FileChecker.Models;
 
 namespace Services
 {
@@ -39,7 +40,7 @@ namespace Services
             return lines;
         }
 
-        public (Dictionary<string, List<int>>, Dictionary<string, List<int>>) CompareFileLineByLine(List<string> fileContents, string reference)
+        public (Dictionary<string, List<int>>, Dictionary<string, List<int>>) CompareFileLineByLine(List<string> fileContents, string reference, SpecialCharacters specialCharacters)
         {
             Dictionary<string, List<int>> uncontained = new Dictionary<string, List<int>>();
             Dictionary<string, List<int>> contained = new Dictionary<string, List<int>>();
@@ -51,6 +52,9 @@ namespace Services
 
                 while ((line = reader.ReadLine()) != null)
                 {
+                    // Skip special characters
+                    if (specialCharacters.Chars.Contains(line.Trim())) continue;
+
                     if (initialValues.TryGetValue(line, out List<int> value))
                     {
                         value.Add(i + 1);
