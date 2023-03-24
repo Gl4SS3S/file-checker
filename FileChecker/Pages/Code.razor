@@ -4,6 +4,8 @@
 
 <div class="row">
     <div class="col-md-6 mr-2 code-container">
+        <h5>Original</h5>
+        <hr>
         @if (!string.IsNullOrEmpty(content))
         {
             <code>
@@ -23,11 +25,11 @@
     </div>
     <div class="col-md-6 analysis-block">
         <div>
-            <h4>File Name</h4>
-            <hr style="color: white; height: 3px;">
+            <h5>File Name</h5>
+            <hr>
         </div>
         <div class="">
-            <h4>Contained Lines</h4>
+            <h6>Contained Lines</h6>
             <code class="compared">
                 @foreach (KeyValuePair<string, List<int>> item in no_difference)
                 {
@@ -45,7 +47,7 @@
             </code>
         </div>
         <div class="">
-            <h4>Doesn't Contain</h4>
+            <h6>Doesn't Contain</h6>
             <code class="compared">
                @foreach (KeyValuePair<string, List<int>> item in difference)
                 {
@@ -90,6 +92,8 @@
         special_characters = await Http.GetFromJsonAsync<SpecialCharacters>("special-json/special_chars.json");
 
         lines = fileReader.ReadFileLineByLine(content);
+
+        Console.WriteLine("Lines: " + reference);
 
         (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference, special_characters);
 
