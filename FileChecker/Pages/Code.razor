@@ -29,7 +29,7 @@
             <hr>
         </div>
         <div class="">
-            <h6>Contained Lines</h6>
+            <h6 class="pb-3">Your File Contains:</h6>
             <code class="compared">
                 @foreach (KeyValuePair<string, List<int>> item in no_difference)
                 {
@@ -46,9 +46,9 @@
                 }
             </code>
         </div>
-        <div class="">
-            <h6>Doesn't Contain</h6>
-            <code class="compared">
+        <div class="mt-5">
+            <h6 class="pb-3">Your File Doesn't Contain:</h6>
+            <code class="not-contained">
                @foreach (KeyValuePair<string, List<int>> item in difference)
                 {
                     <p class="small">
@@ -93,9 +93,6 @@
 
         lines = fileReader.ReadFileLineByLine(content);
 
-        Console.WriteLine("Lines: " + reference);
-
         (no_difference, difference) = fileReader.CompareFileLineByLine(lines, reference, special_characters);
-
     }
 }

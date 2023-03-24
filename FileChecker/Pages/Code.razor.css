@@ -42,3 +42,8 @@ code {
     color: rgb(0, 255, 30) !important;
     background-color: black !important;
 }
+
+.not-contained {
+    color: rgb(255, 111, 111) !important;
+    background-color: black !important;
+}
